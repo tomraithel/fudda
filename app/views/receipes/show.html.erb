@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @receipe.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @receipe.description %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @receipe.link %>
+</p>
+
+<p>
+  <strong>Persons:</strong>
+  <%= @receipe.persons %>
+</p>
+
+<%= link_to 'Edit', edit_receipe_path(@receipe) %> |
+<%= link_to 'Back', receipes_path %>
