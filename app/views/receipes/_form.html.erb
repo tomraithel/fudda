@@ -31,6 +31,11 @@
     <%= f.number_field :persons %>
   </div>
 
+  <div class="field">
+    <%= f.label :ingredients %>
+    <%= f.collection_select :ingredients, Ingredient.all, :id, :quantity %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
