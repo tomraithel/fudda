@@ -19,6 +19,19 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-inverse">
+      <%= link_to('Fudda 1.0', root_path, {class: 'navbar-brand'}) %>
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li>
+            <%= link_to('Rezepte', receipes_path) %>
+          </li>
+          <li>
+            <%= link_to('Zutaten', products_path) %>
+          </li>
+        </ul>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
