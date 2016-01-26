@@ -2,24 +2,12 @@ class IngredientsController < ApplicationController
   before_action :set_receipe
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
 
-  # GET /ingredients
-  # GET /ingredients.json
-  def index
-    @ingredients = Ingredient.all
-  end
-
-  # GET /ingredients/1
-  # GET /ingredients/1.json
-  def show
-  end
-
-  # GET /ingredients/new
-  def new
-    @ingredient = Ingredient.new
-  end
-
   # GET /ingredients/1/edit
   def edit
+  end
+
+  # GET /ingredients/1/new
+  def new
   end
 
   # POST /ingredients
@@ -33,20 +21,6 @@ class IngredientsController < ApplicationController
         format.json { render :show, status: :created, location: @ingredient }
       else
         format.html { render :new }
-        format.json { render json: @ingredient.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /ingredients/1
-  # PATCH/PUT /ingredients/1.json
-  def update
-    respond_to do |format|
-      if @ingredient.update(ingredient_params)
-        format.html { redirect_to edit_receipe_url(@receipe), notice: 'Ingredient was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ingredient }
-      else
-        format.html { render :edit }
         format.json { render json: @ingredient.errors, status: :unprocessable_entity }
       end
     end

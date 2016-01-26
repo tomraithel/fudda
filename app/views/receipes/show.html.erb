@@ -19,13 +19,15 @@
 </ul>
 
 
-<h3>
-  Beschreibung:
-</h3>
+<% unless @receipe.description.empty? %>
+  <h3>
+    Beschreibung:
+  </h3>
 
-<div class="well">
-  <%= @receipe.description %>
-</div>
+  <div class="well">
+    <%= simple_format(@receipe.description) %>
+  </div>
+<% end %>
 
 <% unless @receipe.link.empty? %>
   <p>
