@@ -4,6 +4,7 @@
         url: @ingredient.new_record? ? receipe_ingredients_path(@receipe) : receipe_ingredient_path(@receipe, @ingredient),
         html: {class: 'form-inline'}
       }) do |f| %>
+
   <%= render partial: 'shared/form_errors', locals: {model: @ingredient} %>
 
   <div class="form-group">
