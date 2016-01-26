@@ -1,32 +1,22 @@
-<%= form_for(ingredient) do |f| %>
-  <% if ingredient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
+<%= form_for(
+      @ingredient,
+      {
+        url: @ingredient.new_record? ? receipe_ingredients_path(@receipe) : receipe_ingredient_path(@receipe, @ingredient),
+        html: {class: 'form-inline'}
+      }) do |f| %>
+  <%= render partial: 'shared/form_errors', locals: {model: @ingredient} %>
 
-      <ul>
-      <% ingredient.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+  <div class="form-group">
     <%= f.label :quantity %>
-    <%= f.text_field :quantity %>
+    <%= f.text_field :quantity, {class: 'form-control', placeholder: 'z.B. 200g'} %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :product_id %>
-    <%= f.number_field :product_id %>
+    <%= f.select :product_id, Product.all.collect {|product| [product.name, product.id]}, {}, {class: 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :receipe_id %>
-    <%= f.number_field :receipe_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit({class: 'btn btn-primary'}) %>
   </div>
 <% end %>

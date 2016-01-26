@@ -1,42 +1,28 @@
 <%= form_for(receipe) do |f| %>
-  <% if receipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(receipe.errors.count, "error") %> prohibited this receipe from being saved:</h2>
 
-      <ul>
-      <% receipe.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render partial: 'shared/form_errors', locals: {model: receipe} %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, {class: 'form-control', placeholder: 'Neues Rezept'} %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, {class: 'form-control', rows: 10, placeholder: 'Schritte für die Zubereitung'} %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :link %>
-    <%= f.text_field :link %>
+    <%= f.text_field :link, {class: 'form-control', placeholder: 'http://www.chefkoch.de'} %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :persons %>
-    <%= f.number_field :persons %>
+    <%= f.number_field :persons, {class: 'form-control', placeholder: 'Anzahl der Personen'} %>
   </div>
 
-  <div class="field">
-    <%= f.label :ingredients %>
-    <%= f.collection_select :ingredients, Ingredient.all, :id, :quantity %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <%= f.submit({class: 'btn btn-primary'}) %>
   </div>
 <% end %>

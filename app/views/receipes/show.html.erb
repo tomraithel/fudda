@@ -1,24 +1,40 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @receipe.title %></h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @receipe.title %>
-</p>
+<h3>
+  Zutaten:
+  <% unless @receipe.persons.nil? %>
+    <small>
+      (für <%= @receipe.persons %> Personen)
+    </small>
+  <% end %>
+</h3>
 
-<p>
-  <strong>Description:</strong>
+<ul>
+  <% @receipe.ingredients.each do |ingredient| %>
+    <li>
+      <%= ingredient.quantity %>
+      <%= ingredient.product.name %>
+    </li>
+  <% end %>
+</ul>
+
+
+<h3>
+  Beschreibung:
+</h3>
+
+<div class="well">
   <%= @receipe.description %>
-</p>
+</div>
 
-<p>
-  <strong>Link:</strong>
-  <%= @receipe.link %>
-</p>
+<% unless @receipe.link.empty? %>
+  <p>
+    <strong>Link:</strong>
+    <%= link_to(@receipe.link) %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Persons:</strong>
-  <%= @receipe.persons %>
-</p>
+
 
 <%= link_to 'Edit', edit_receipe_path(@receipe) %> |
 <%= link_to 'Back', receipes_path %>

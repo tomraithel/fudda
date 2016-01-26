@@ -32,6 +32,9 @@
         </ul>
       </div>
     </nav>
+
+    <%= render partial: 'shared/flashmessage', locals: {notice: notice} %>
+
     <%= yield %>
   </body>
 </html>

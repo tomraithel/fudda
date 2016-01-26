@@ -2,5 +2,19 @@
 
 <%= render 'form', receipe: @receipe %>
 
+<hr/>
+
+<h3>Zutaten</h3>
+<ul>
+  <% @receipe.ingredients.each do |ingredient| %>
+    <li>
+      <%= ingredient.quantity %>
+      <%= ingredient.product.name %>
+      <%= link_to '❌', receipe_ingredient_path(@receipe, ingredient), method: :delete, data: { confirm: 'Zutat entfernen?' }, class: 'btn btn-link btn-xs' %>
+    </li>
+  <% end %>
+</ul>
+<%= render 'ingredients/form', locals: {ingredient: @ingredient, receipe: @receipe} %>
+
 <%= link_to 'Show', @receipe %> |
 <%= link_to 'Back', receipes_path %>

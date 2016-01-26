@@ -19,6 +19,7 @@ class ReceipesController < ApplicationController
 
   # GET /receipes/1/edit
   def edit
+    @ingredient = Ingredient.new
   end
 
   # POST /receipes
@@ -28,7 +29,7 @@ class ReceipesController < ApplicationController
 
     respond_to do |format|
       if @receipe.save
-        format.html { redirect_to @receipe, notice: 'Receipe was successfully created.' }
+        format.html { redirect_to edit_receipe_path(@receipe), notice: 'Receipe was successfully created.' }
         format.json { render :show, status: :created, location: @receipe }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class ReceipesController < ApplicationController
   def update
     respond_to do |format|
       if @receipe.update(receipe_params)
-        format.html { redirect_to @receipe, notice: 'Receipe was successfully updated.' }
+        format.html { redirect_to edit_receipe_path(@receipe), notice: 'Receipe was successfully updated.' }
         format.json { render :show, status: :ok, location: @receipe }
       else
         format.html { render :edit }
