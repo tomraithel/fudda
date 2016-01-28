@@ -1,0 +1,27 @@
+<h1>Meals</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Receipe</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meals.each do |meal| %>
+      <tr>
+        <td><%= meal.day %></td>
+        <td><%= meal.receipe.title %></td>
+        <td class="action"><%= link_to 'Edit', edit_meal_path(meal), class: 'btn btn-default btn-xs' %></td>
+        <td class="action"><%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<br>
+
+<%= link_to 'New Meal', new_meal_path, {class: 'btn btn-primary btn-lg'} %>

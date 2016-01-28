@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :meals, except: [:show]
   resources :products, except: [:show]
   resources :receipes do
     resources :ingredients, except: [:show, :index, :edit]

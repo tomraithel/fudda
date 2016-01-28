@@ -43,18 +43,34 @@ table {
     flex: 1 1 100%;
     text-align: center;
     min-height: #{(30)}vw;
-    background: $gray;
     margin: #{(0.5)}vw;
     display: flex;
     flex-direction: column;
 
     &--today {
-      background: darken($gray, 10);
+      //background: darken($gray, 10);
     }
 
     &__text {
-      margin: 20px 0;
+      margin: 30px 0;
+      padding-bottom: 10px;
       font-size: #{(2)}vw;
+      border-bottom: 1px solid black;
+    }
+
+    &__meal {
+      background: $gray;
+      padding: 5px;
+      margin-bottom: 10px;
+      &__link {
+        padding: 10px 0;
+        display: block;
+        font-size: 1.2em;
+      }
+
+      &__actions {
+        opacity: 0.5;
+      }
     }
   }
 }
