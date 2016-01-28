@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @date = Cal::Month.new()
+    @month = TickTack::Calendar.new(nil, {dow: 1}).month
   end
 end

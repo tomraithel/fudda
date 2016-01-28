@@ -1,3 +1,5 @@
+$gray: #e6e6e6;
+
 body {
   padding: 20px;
 }
@@ -16,4 +18,41 @@ table {
 
 .field_with_errors {
   display: inline;
+}
+
+.calendar {
+  &__headline {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  &__week,
+  &__header {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__weekday {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+
+  &__day {
+    flex: 1 1 100%;
+    text-align: center;
+    height: #{(100 / 8)}vw;
+    background: $gray;
+    margin: #{(1)}vw;
+    font-size: #{(3)}vw;
+    display: flex;
+    align-items: center;
+
+    &__text {
+      flex: 1 1 100%;
+    }
+
+    &--interfering {
+      opacity: 0.5;
+    }
+  }
 }
