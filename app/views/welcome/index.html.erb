@@ -1,5 +1,6 @@
+
 <div class="calendar">
-  <h2 class="calendar__headline"><%= "#{@month.month_i} / #{@month.year_i}" %></h2>
+  <h2 class="calendar__headline"><%= "#{@day.month.month_i} / #{@day.month.year_i}" %></h2>
 
   <div class="calendar__header">
     <% (0..6).each do |weekday| %>
@@ -9,15 +10,25 @@
     <% end %>
   </div>
 
-  <% @month.weeks.each do |days| %>
-    <div class="calendar__week">
-      <% days.each do |day| %>
-        <div class="calendar__day <%= @month.contains?(day) ? '' : 'calendar__day--interfering' %>">
+  <div class="calendar__week">
+    <% @day.weekdays.each do |day| %>
+        <div class="calendar__day <%= (day == @day) ? 'calendar__day--today' : '' %>">
           <div class="calendar__day__text">
-            <%= day.date.strftime('%e') %>
+            <%= day.date.strftime('%e.%m.') %>
           </div>
+
+          asdfasfd
         </div>
-      <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="clearfix">
+  <div class="pull-left">
+    <%= link_to('vorherige Woche', root_path({day: @day.date - 7}), {class: 'btn btn-primary'}) %>
+  </div>
+  <div class="pull-right">
+    <%= link_to('nächste Woche', root_path({day: @day.date + 7}), {class: 'btn btn-primary'}) %>
+  </div>
 </div>

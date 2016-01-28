@@ -21,6 +21,8 @@ table {
 }
 
 .calendar {
+  margin-bottom: 30px;
+
   &__headline {
     text-align: center;
     margin-bottom: 40px;
@@ -40,19 +42,19 @@ table {
   &__day {
     flex: 1 1 100%;
     text-align: center;
-    height: #{(100 / 8)}vw;
+    min-height: #{(30)}vw;
     background: $gray;
-    margin: #{(1)}vw;
-    font-size: #{(3)}vw;
+    margin: #{(0.5)}vw;
     display: flex;
-    align-items: center;
+    flex-direction: column;
 
-    &__text {
-      flex: 1 1 100%;
+    &--today {
+      background: darken($gray, 10);
     }
 
-    &--interfering {
-      opacity: 0.5;
+    &__text {
+      margin: 20px 0;
+      font-size: #{(2)}vw;
     }
   }
 }
