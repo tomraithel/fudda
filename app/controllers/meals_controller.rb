@@ -4,11 +4,10 @@ class MealsController < ApplicationController
   # GET /meals
   # GET /meals.json
   def index
-    @meals = Meal.all.order(day: :desc).limit(20)
-    puts '-------12------------------------------------------------------'
-    puts meal_filter_params
-    puts '-------------------------------------------------------------'
     @filter = MealFilter.new(meal_filter_params)
+    @meals = Meal.where("day >= ?", @filter.day_from)
+                 .where("day <= ?", @filter.day_to)
+                 .order(day: :desc)
   end
 
   # GET /meals/new

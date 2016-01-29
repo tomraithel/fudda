@@ -1,4 +1,9 @@
-<!--<h1>Meals</h1>-->
+<h1>
+  Meals
+  <small>
+    <%= @filter.day_from.strftime('%d.%m.') %> - <%= @filter.day_to.strftime('%d.%m.') %>
+  </small>
+</h1>
 
 <div class="well">
 <%= form_for(@filter, {url: meals_url, method: :get}) do |f| %>
@@ -15,8 +20,6 @@
     </div>
 <% end %>
 </div>
-
-
 
 
 <table class="table">
