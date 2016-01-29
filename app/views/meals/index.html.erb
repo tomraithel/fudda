@@ -1,4 +1,23 @@
-<h1>Meals</h1>
+<!--<h1>Meals</h1>-->
+
+<div class="well">
+<%= form_for(@filter, {url: meals_url, method: :get}) do |f| %>
+    <div class="form-group form-group--date">
+      <%= f.label :day_from %>
+      <%= f.date_select :day_from, {}, {class: 'form-control'} %>
+    </div>
+    <div class="form-group form-group--date">
+      <%= f.label :day_to %>
+      <%= f.date_select :day_to, {}, {class: 'form-control'} %>
+    </div>
+    <div class="form-group clearfix">
+      <%= f.submit('Filter', {class: 'btn btn-primary pull-right'}) %>
+    </div>
+<% end %>
+</div>
+
+
+
 
 <table class="table">
   <thead>

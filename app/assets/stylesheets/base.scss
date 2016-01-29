@@ -8,6 +8,18 @@ form {
   margin-bottom: 20px;
 }
 
+.form-group {
+  &--date {
+    label {
+      display: block;
+    }
+    .form-control {
+      width: 15%;
+      display: inline-block;
+    }
+  }
+}
+
 table {
   td {
     &.action {

@@ -22,6 +22,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # Use Puma as the app server
 gem 'puma'
+# Calendar
 gem 'tick_tack', '~> 1.0'
 
 # Use ActiveModel has_secure_password

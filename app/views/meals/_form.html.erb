@@ -1,7 +1,7 @@
 <%= form_for(meal) do |f| %>
   <%= render partial: 'shared/form_errors', locals: {model: @meal} %>
 
-  <div class="form-group">
+  <div class="form-group form-group--date">
     <%= f.label :day %>
     <%= f.date_select :day, {}, {class: 'form-control'} %>
   </div>

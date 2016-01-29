@@ -5,6 +5,10 @@ class MealsController < ApplicationController
   # GET /meals.json
   def index
     @meals = Meal.all.order(day: :desc).limit(20)
+    puts '-------12------------------------------------------------------'
+    puts meal_filter_params
+    puts '-------------------------------------------------------------'
+    @filter = MealFilter.new(meal_filter_params)
   end
 
   # GET /meals/new
@@ -68,5 +72,14 @@ class MealsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def meal_params
       params.require(:meal).permit(:day, :receipe_id)
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def meal_filter_params
+      if params.has_key? :meal_filter
+        params.require(:meal_filter).permit(:day_from, :day_to)
+      else
+        {}
+      end
     end
 end
