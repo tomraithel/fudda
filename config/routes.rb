@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :meals, except: [:show]
+  get '/meals/ingredients', to: 'meals#ingredients'
+
   resources :products, except: [:show]
   resources :receipes do
     resources :ingredients, except: [:show, :index, :edit]

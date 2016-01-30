@@ -3,6 +3,8 @@
 module MultiparameterAttributeAssignment
   include ActiveModel::ForbiddenAttributesProtection
 
+  attr_reader :sanatized_attributes
+
   def initialize(params = {})
     assign_attributes(params)
   end
@@ -10,9 +12,9 @@ module MultiparameterAttributeAssignment
   def assign_attributes(new_attributes)
     multi_parameter_attributes = []
 
-    attributes = sanitize_for_mass_assignment(new_attributes.stringify_keys)
+    @sanatized_attributes = sanitize_for_mass_assignment(new_attributes.stringify_keys)
 
-    attributes.each do |k, v|
+    @sanatized_attributes.each do |k, v|
       if k.include?('(')
         multi_parameter_attributes << [k, v]
       else

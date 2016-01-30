@@ -1,13 +1,33 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: [:show, :edit, :update, :destroy]
 
+  def meals_by_filter
+    Meal.where("day >= ?", @filter.day_from)
+        .where("day <= ?", @filter.day_to)
+        .order(:day)
+  end
+
+  def ingredients_by_filter
+    Ingredient.find_by_sql(['
+             SELECT i.* FROM ingredients i
+               INNER JOIN receipes r ON r.id = i.receipe_id
+                 INNER JOIN meals m ON m.receipe_id = r.id
+               INNER JOIN products p ON p.id = i.product_id
+             WHERE m.day >= ?
+             AND m.day <= ?
+             ORDER BY p.name
+    ', @filter.day_from, @filter.day_to])
+  end
+
   # GET /meals
   # GET /meals.json
   def index
     @filter = MealFilter.new(meal_filter_params)
-    @meals = Meal.where("day >= ?", @filter.day_from)
-                 .where("day <= ?", @filter.day_to)
-                 .order(day: :desc)
+    if params[:show_ingredients] == 'true'
+      @ingredients = ingredients_by_filter
+    else
+      @meals = meals_by_filter
+    end
   end
 
   # GET /meals/new

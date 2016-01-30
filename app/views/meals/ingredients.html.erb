@@ -1,0 +1,16 @@
+<% range = @filter.day_from.strftime('%d.%m.') + ' - ' +  @filter.day_to.strftime('%d.%m.') %>
+<h1>
+  Alle Zutaten für <%= range %>
+</h1>
+
+<ul>
+  <% @ingredients.each do |ingredient| %>
+    <li>
+      <%= ingredient.quantity %>
+      <%= ingredient.product.name %>
+      <small class="text-muted">
+        (<%= ingredient.receipe.title %>)
+      </small>
+    </li>
+  <% end %>
+</ul>

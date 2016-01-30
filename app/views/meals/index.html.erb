@@ -1,7 +1,8 @@
+<% range = @filter.day_from.strftime('%d.%m.') + ' - ' +  @filter.day_to.strftime('%d.%m.') %>
 <h1>
   Meals
   <small>
-    <%= @filter.day_from.strftime('%d.%m.') %> - <%= @filter.day_to.strftime('%d.%m.') %>
+    <%= range %>
   </small>
 </h1>
 
@@ -16,34 +17,63 @@
       <%= f.date_select :day_to, {}, {class: 'form-control'} %>
     </div>
     <div class="form-group clearfix">
-      <%= f.submit('Filter', {class: 'btn btn-primary pull-right'}) %>
+      <div class="pull-right">
+        <%= f.submit('Filter', {class: 'btn btn-primary '}) %>
+      </div>
     </div>
+    <input type="hidden" name="show_ingredients" value="<%= @meals.nil? %>" />
 <% end %>
 </div>
 
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Day</th>
-      <th>Receipe</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<ul class="nav nav-tabs">
+  <li role="presentation" class="<%= 'active' unless @meals.nil?%>"> <a href="<%= meals_path({meal_filter: @filter.sanatized_attributes, show_ingredients: false})%>">Mahlzeiten</a></li>
+  <li role="presentation" class="<%= 'active' unless @ingredients.nil?%>"><a href="<%= meals_path({meal_filter: @filter.sanatized_attributes, show_ingredients: true})%>">Zutaten</a></li>
+</ul>
 
-  <tbody>
-    <% @meals.each do |meal| %>
+
+<% unless @meals.nil? %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= meal.day %></td>
-        <td><%= meal.receipe.title %></td>
-        <td class="action"><%= link_to 'Edit', edit_meal_path(meal), class: 'btn btn-default btn-xs' %></td>
-        <td class="action"><%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' %></td>
+        <th>Day</th>
+        <th>Receipe</th>
+        <th colspan="3"></th>
       </tr>
+    </thead>
+
+    <tbody>
+      <% @meals.each do |meal| %>
+        <tr>
+          <td><%= meal.day %></td>
+          <td><%= meal.receipe.title %></td>
+          <td class="action"><%= link_to 'Edit', edit_meal_path(meal), class: 'btn btn-default btn-xs' %></td>
+          <td class="action"><%= link_to 'Destroy', meal, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Meal', new_meal_path, {class: 'btn btn-primary btn-lg'} %>
+<% end %>
+
+
+<% unless @ingredients.nil? %>
+  <h1>
+    Zutaten
+  </h1>
+
+  <ul>
+    <% @ingredients.each do |ingredient| %>
+      <li>
+        <%= ingredient.quantity %>
+        <%= ingredient.product.name %>
+        <small class="text-muted">
+          (<%= ingredient.receipe.title %>)
+        </small>
+      </li>
     <% end %>
-  </tbody>
-</table>
-
-
-<br>
-
-<%= link_to 'New Meal', new_meal_path, {class: 'btn btn-primary btn-lg'} %>
+  </ul>
+<% end %>
