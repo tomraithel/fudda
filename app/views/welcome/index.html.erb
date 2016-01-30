@@ -12,7 +12,7 @@
 
   <div class="calendar__week">
     <% @day.weekdays.each do |day| %>
-        <div class="calendar__day <%= (day == @day) ? 'calendar__day--today' : '' %>">
+        <div class="calendar__day <%= (day.date == @today_date) ? 'calendar__day--today' : '' %>">
           <div class="calendar__day__text">
             <%= day.date.strftime('%e.%m.') %>
           </div>

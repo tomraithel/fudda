@@ -60,7 +60,9 @@ table {
     flex-direction: column;
 
     &--today {
-      //background: darken($gray, 10);
+      .calendar__day__text {
+        font-weight: bold;
+      };
     }
 
     &__text {
