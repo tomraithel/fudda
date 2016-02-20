@@ -50,4 +50,8 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Set ruby to 2.3.0 via RVM:
 ruby "2.3.0"
+
+# Set local gemset for RVM:
+#ruby-gemset=rails5.0
