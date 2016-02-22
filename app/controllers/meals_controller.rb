@@ -9,7 +9,7 @@ class MealsController < ApplicationController
 
   def ingredients_by_filter
     Ingredient.find_by_sql(['
-             SELECT i.* FROM ingredients i
+             SELECT i.*, m.day as meal_day FROM ingredients i
                INNER JOIN receipes r ON r.id = i.receipe_id
                  INNER JOIN meals m ON m.receipe_id = r.id
                INNER JOIN products p ON p.id = i.product_id

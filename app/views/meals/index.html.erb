@@ -71,7 +71,7 @@
         <%= ingredient.quantity %>
         <%= ingredient.product.name %>
         <small class="text-muted">
-          (<%= ingredient.receipe.title %>)
+          (<%= ingredient.receipe.title %>, <%= l(ingredient.meal_day, format: '%a. %d.%m') %>)
         </small>
       </li>
     <% end %>
