@@ -32,6 +32,8 @@ table {
   display: inline;
 }
 
+$break: 1024px;
+
 .calendar {
   margin-bottom: 30px;
 
@@ -44,6 +46,16 @@ table {
   &__header {
     display: flex;
     flex-direction: row;
+  }
+
+  &__header {
+    @media screen and (max-width: $break) {
+      display: none;
+    }
+  }
+
+  &__week {
+    display: block;
   }
 
   &__weekday {
@@ -70,6 +82,10 @@ table {
       padding-bottom: 10px;
       font-size: #{(2)}vw;
       border-bottom: 1px solid black;
+
+      @media screen and (max-width: $break) {
+        font-size: #{(10)}vw;
+      }
     }
 
     &__meal {
