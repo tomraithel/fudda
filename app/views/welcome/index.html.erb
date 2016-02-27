@@ -18,27 +18,24 @@
           </div>
 
           <% meals = Meal.where(day: day.date) %>
-          <% if meals.length > 0 %>
-            <% meals.find_each do |meal| %>
-              <div class="calendar__day__meal">
-                <a href="<%= receipe_url(meal.receipe) %>" class="calendar__day__meal__link">
-                  <%= meal.receipe.title %>
-                </a>
-                <div class="clearfix calendar__day__meal__actions">
-                  <div class="pull-right">
-                    <%= link_to 'Delete', meal, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link btn-xs' %>
-                  </div>
-                  <div class="pull-right">
-                    <%= link_to 'Edit', edit_meal_path(meal), class: 'btn btn-link btn-xs' %>
-                  </div>
+          <% meals.find_each do |meal| %>
+            <div class="calendar__day__meal">
+              <a href="<%= receipe_url(meal.receipe) %>" class="calendar__day__meal__link">
+                <%= meal.receipe.title %>
+              </a>
+              <div class="clearfix calendar__day__meal__actions">
+                <div class="pull-right">
+                  <%= link_to 'Delete', meal, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link btn-xs' %>
+                </div>
+                <div class="pull-right">
+                  <%= link_to 'Edit', edit_meal_path(meal), class: 'btn btn-link btn-xs' %>
                 </div>
               </div>
-            <% end %>
-          <% else %>
-            <div>
-              <%= link_to('Mahlzeit hinzufügen', new_meal_path({day: day.date}), {class: 'btn btn-link btn-sm'}) %>
             </div>
           <% end %>
+          <div>
+            <%= link_to('Mahlzeit hinzufügen', new_meal_path({day: day.date}), {class: 'btn btn-link btn-sm'}) %>
+          </div>
         </div>
     <% end %>
   </div>
