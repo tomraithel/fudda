@@ -55,7 +55,9 @@ $break: 1024px;
   }
 
   &__week {
-    display: block;
+    @media screen and (max-width: $break) {
+      display: block;
+    }
   }
 
   &__weekday {
