@@ -4,13 +4,24 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all.order(:name)
+    @products = Product.all.order(:priority)
   end
 
   # GET /products/new
   def new
     @product = Product.new
   end
+
+  # POST /products/reorder
+  def reorder
+    ids = params[:ids]
+    ids.each_with_index do |id, idx|
+      product = Product.find(id)
+      if product.priority != idx
+        product.update(priority: idx)
+      end
+    end
+   end
 
   # GET /products/1/edit
   def edit
@@ -20,6 +31,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    @product.priority = Product.count
 
     respond_to do |format|
       if @product.save

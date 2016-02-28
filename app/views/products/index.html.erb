@@ -5,7 +5,7 @@
 <br>
 <br>
 
-<table class="table">
+<table class="table table--sortable" data-reorder-url="<%= products_reorder_path %>">
   <thead>
     <tr>
       <th>Name</th>
@@ -15,7 +15,7 @@
 
   <tbody>
     <% @products.each do |product| %>
-      <tr>
+      <tr data-id="<%= product.id %>">
         <td><%= product.name %></td>
         <td class="action"><%= link_to 'Edit', edit_product_path(product), class: 'btn btn-default btn-xs' %></td>
         <td class="action"><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-xs' %></td>

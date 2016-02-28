@@ -15,7 +15,7 @@ class MealsController < ApplicationController
                INNER JOIN products p ON p.id = i.product_id
              WHERE m.day >= ?
              AND m.day <= ?
-             ORDER BY p.name
+             ORDER BY p.priority, p.name
     ', @filter.day_from, @filter.day_to])
   end
 

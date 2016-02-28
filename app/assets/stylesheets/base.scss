@@ -21,6 +21,16 @@ form {
 }
 
 table {
+  tr {
+    background: #fff;
+    &.ui-sortable-helper {
+      background: $gray;
+      opacity: 0.8;
+      .btn {
+        display: none;
+      }
+    }
+  }
   td {
     &.action {
       width: 30px;

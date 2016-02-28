@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/meals/ingredients', to: 'meals#ingredients'
 
   resources :products, except: [:show]
+  post '/products/reorder', to: 'products#reorder', as: 'products_reorder'
+
   resources :receipes do
     resources :ingredients, except: [:show, :index, :edit]
   end
