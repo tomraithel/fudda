@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   def index
 
-    calendar = TickTack::Calendar.new(nil, {dow: 1});
+    calendar = TickTack::Calendar.new(nil, {dow: 1})
     @today_date = DateTime.now.to_date
 
     if params[:day]

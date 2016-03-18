@@ -23,7 +23,7 @@
   </head>
 
   <body data-no-turbolink>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse hidden-print">
       <div class="navbar-header">
         <%= link_to('Fudda 1.0', root_path, {class: 'navbar-brand'}) %>
         <button
@@ -48,7 +48,7 @@
               <%= link_to('Zutaten', products_path) %>
             </li>
             <li>
-              <%= link_to('Mahlzeiten', meals_path) %>
+              <%= link_to('Essensplan', meals_path) %>
             </li>
           </ul>
         </div>

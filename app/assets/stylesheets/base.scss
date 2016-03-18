@@ -2,7 +2,16 @@ $gray: #e6e6e6;
 
 body {
   padding: 20px;
+
+  @media print {
+    font-size: 10px;
+
+    h1 {
+      font-size: 15px;
+    }
+  }
 }
+
 
 form {
   margin-bottom: 20px;

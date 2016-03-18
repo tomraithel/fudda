@@ -1,12 +1,12 @@
 <% range = @filter.day_from.strftime('%d.%m.') + ' - ' +  @filter.day_to.strftime('%d.%m.') %>
 <h1>
-  Meals
+  Essensplan
   <small>
     <%= range %>
   </small>
 </h1>
 
-<div class="well">
+<div class="well hidden-print">
 <%= form_for(@filter, {url: meals_url, method: :get}) do |f| %>
     <div class="form-group form-group--date">
       <%= f.label :day_from %>
@@ -26,7 +26,7 @@
 </div>
 
 
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs hidden-print">
   <li role="presentation" class="<%= 'active' unless @meals.nil?%>"> <a href="<%= meals_path({meal_filter: @filter.sanatized_attributes, show_ingredients: false})%>">Mahlzeiten</a></li>
   <li role="presentation" class="<%= 'active' unless @ingredients.nil?%>"><a href="<%= meals_path({meal_filter: @filter.sanatized_attributes, show_ingredients: true})%>">Zutaten</a></li>
 </ul>
@@ -61,7 +61,7 @@
 
 
 <% unless @ingredients.nil? %>
-  <h1>
+  <h1 class="hidden-print">
     Zutaten
   </h1>
 
