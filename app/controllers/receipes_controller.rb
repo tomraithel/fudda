@@ -4,7 +4,7 @@ class ReceipesController < ApplicationController
   # GET /receipes
   # GET /receipes.json
   def index
-    @receipes = Receipe.all
+    @receipes = Receipe.all.order(:title)
   end
 
   # GET /receipes/1

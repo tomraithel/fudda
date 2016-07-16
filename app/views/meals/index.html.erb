@@ -65,7 +65,7 @@
     Zutaten
   </h1>
 
-  <ul>
+  <ul contenteditable="true">
     <% @ingredients.each do |ingredient| %>
       <li>
         <%= ingredient.quantity %>
@@ -75,5 +75,6 @@
         </small>
       </li>
     <% end %>
+    <li>...mehr?</li>
   </ul>
 <% end %>
